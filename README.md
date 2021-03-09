@@ -12,16 +12,16 @@ Let's get started!
 
 * Because this is a new exercise, be sure to close the running application in Terminal first.
 
-Change directories to the main directory you're storing your projects in. Inside it, run your command:
+Clone this repo and then make a react app in it:
 
 ```sh
-create-react-app todo-list
+create-react-app react-todo-list
 ```
 
 The tool created a new directory for our app, so let's move into it...
 
 ```sh
-cd todo-list
+cd react-todo-list
 ```
 
 Use `npm start` to start a server that will serve your new React application!
