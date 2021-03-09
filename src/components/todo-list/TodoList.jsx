@@ -31,9 +31,26 @@ export default class TodoList extends Component {
     }, () => this.setState({ newItemInput: '' }))
   }
 
+  handleDeleteTask = (index) => {
+    this.setState((prevState, props) => {
+      // make a new array from prev state
+      let newTaskArray = [...prevState.taskArray]
+
+      // splice task out
+      newTaskArray.splice(index, 1)
+      return {
+        taskArray: newTaskArray
+      }
+    })
+  }
+
   render() {
     const listItems = this.state.taskArray.map((placeHolderTask, index) => {
-      return <ListItem task={placeHolderTask} key={`ListItem ${index}`} />
+      return <ListItem 
+        task={placeHolderTask} 
+        key={`ListItem ${index}`} 
+        handleDeleteTask={() => { this.handleDeleteTask(index) }}
+        />
     })
     return (
       <div>
