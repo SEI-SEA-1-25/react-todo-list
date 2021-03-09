@@ -6,7 +6,7 @@ So, we've gone through all of the basics of React. To really hammer it home with
 
 This is what our list will look like when we're finished:
 
-![finished-list](./readme-img/finished.png)
+![finished-list](https://i.imgur.com/McEInR3.png)
 
 Let's get started!
 
@@ -297,7 +297,7 @@ render() {
 </details>
 
 Our app now looks like this:
-![list-preview](./readme-img/2.png)
+![list-preview](https://i.imgur.com/0hpTBpr.png)
 
 ## Part 4 Clearing the List
 
@@ -387,7 +387,7 @@ check it:
 Our App looks like this now:
 
 Now what we have is:
-![list-preview](./readme-img/3.png)
+![list-preview](https://i.imgur.com/Zr5YH73.png)
 
 
 > Don't forget to try it out!
