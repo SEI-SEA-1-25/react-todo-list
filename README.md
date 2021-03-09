@@ -2,12 +2,11 @@
 
 ## Review
 
-
 So, we've gone through all of the basics of React. To really hammer it home with practice, let's walk through complete creation of an app. This will be a to-do list, keeping track of everything we need to do for the day (after we finish this!). It's a lot, so we're going to want it to be editable.
 
 This is what our list will look like when we're finished:
 
-![finished-list](./images/todo-list-finished.png)
+![finished-list](./readme-img/finished.png)
 
 Let's get started!
 
@@ -183,10 +182,6 @@ export default class TodoList extends Component {
 
 </details>
 
-At this point, our app looks like this:
-
-![list-preview](./images/todo-list-1.png)
-
 ## Part 2: Props
 
 This is a great start - we've already nested components (`ListItem` inside of `TodoList`). Now, let's add some props to make this useful and check that current list item off!
@@ -220,10 +215,6 @@ Update the hard code value in the `<li>` tags:
 ```
 
 </details>
-
-Our app now looks like this:
-![list-preview](./images/todo-list-2.png)
-
 
 ## Part 3:
 
@@ -305,8 +296,8 @@ render() {
 
 </details>
 
-Now what we have is:
-![list-preview](./images/todo-list-3.png)
+Our app now looks like this:
+![list-preview](./readme-img/2.png)
 
 ## Part 4 Clearing the List
 
@@ -353,7 +344,6 @@ export default class TodoList extends Component {
 
 </details>
 
-
 ### Add a the ability to clear the list
 
 Now, we'll look into making this list changeable. Remember, updating state will involve calling `setState`. Let's use a simple example with a "clear" button in `MyList`.
@@ -396,7 +386,8 @@ check it:
 
 Our App looks like this now:
 
-add pic
+Now what we have is:
+![list-preview](./readme-img/3.png)
 
 
 > Don't forget to try it out!
@@ -535,9 +526,7 @@ Finally, add the fuctionaly needed to each method.
 * `handleNewItemSubmit` is for when we submit the form
  * We will need a callback given to `this.setState` here since we need to get the previous state.
  * don't forget to prevent the default behaviour of form submission!
- > You can use the handy spread operator to spread the previous state into a new array along with the newItemInput from the current state
-
-verify it is updating the state correctly with a console.log() as a callback to `this.setState` before moving on
+ > You can use the handy spread operator to spread the previous state into a new array along with the newItemInput from the current state. Don't forget to clear newItemInput with a callback after you set the new state!
 
 <details>
   <summary>I give up! Show me how it works!</summary>
@@ -549,7 +538,7 @@ verify it is updating the state correctly with a console.log() as a callback to 
       return {
         taskArray: [...prevState.taskArray, this.state.newItemInput]
       }
-    }, () => console.log(this.state))
+    }, () => this.setState({ newItemInput: '' }))
   }
   ```
 
@@ -593,7 +582,7 @@ export default class TodoList extends Component {
       return {
         taskArray: [...prevState.taskArray, this.state.newItemInput]
       }
-    }, () => console.log(this.state))
+    }, () => this.setState({ newItemInput: '' }))
   }
 
   render() {

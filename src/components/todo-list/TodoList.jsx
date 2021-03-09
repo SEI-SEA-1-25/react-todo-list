@@ -28,7 +28,7 @@ export default class TodoList extends Component {
       return {
         taskArray: [...prevState.taskArray, this.state.newItemInput]
       }
-    }, () => console.log(this.state))
+    }, () => this.setState({ newItemInput: '' }))
   }
 
   render() {
