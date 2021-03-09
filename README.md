@@ -10,7 +10,7 @@ This is what our list will look like when we're finished:
 
 Let's get started!
 
-* Because this is a new exercise, be sure to close any running applications in Terminal first.
+* Because this is a new exercise, be sure to close any running applications in Terminal first. `killall node` can stop any stray processes that you may have left running on accident.
 
 Clone this repo and then make a react app in it:
 
@@ -33,7 +33,7 @@ npm start
 
 * Check it out! If you browse to http://localhost:3000, you should have a fresh react app.
 
-* Make sure that as you go, you frequently check the site to ensure your changes are all reflecting accurately!
+* Make sure that as you go, you frequently check the app in your browser to ensure your changes are all reflecting accurately!
 
 ## Part 1: App setup and component creation
 
@@ -185,7 +185,7 @@ export default class TodoList extends Component {
 
 ## Part 2: Props
 
-This is a great start - we've already nested components (`ListItem` inside of `TodoList`). Now, let's add some props to make this useful and check that current list item off!
+This is a great start - we've already nested components (`ListItem` inside of `TodoList`). Now, let's add some props to make this useful!
 
 Let's first just pass a prop into `ListItem` from `TodoList`. We'll call the prop something simple, like `todo`. I've got the munchies; I'll pass in a value of 'buy ice cream.'
 
@@ -219,7 +219,7 @@ Update the hard code value in the `<li>` tags:
 
 ## Part 3:
 
-If we want to make this a truly extensible list, we could create an array of items, pass them into props through the `ListItem` component, and then render each item. Let's do that now.
+If we want to make this a truly extensible list, we could create an array of items, pass them into props to many `ListItem` components, and then render all of them. Let's do that now.
 
 * First create an file that exports an array of placeholder tasks and then import it into your `TodoList.jsx`.
 
@@ -303,7 +303,7 @@ Our app now looks like this:
 
 ## Part 4 Clearing the List
 
-After my nap, I took a look at my todo list and decided I want to be able to clear it since I had complete all my tasks, so lets add that functionality now.
+After my nap, I took a look at my todo list and decided I want to be able to clear it since I had completed all my tasks, so lets add that functionality now.
 
 We're going to add a button to the list that allows users to clear away everything in it. 
 
@@ -313,7 +313,7 @@ First, let's convert the list to be a state attribute, that way we can change it
 
 Lets just refactor the initial state to be our placeholder tasks for the time being.
 
-* At the top of the `TodoList` component, set an initial state for an attribute called `taskArray`. Its defualt value should be the place holder task array.
+* At the top of the `TodoList` component, set an initial state for an attribute called `taskArray`. Its default value should be the place holder task array.
 
 * Don't forget to change the `map` call!
 * Always check to be sure your app is accurate (it should still look the same).
@@ -350,10 +350,10 @@ export default class TodoList extends Component {
 Now, we'll look into making this list changeable. Remember, updating state will involve calling `setState`. Let's use a simple example with a "clear" button in `MyList`.
 
 * First, in `TodoList.jsx`, define the method that will be handle a button click event
-  * It should definately be an arrow function
+  * It should definitely be an arrow function to avoid wonky binding issues
 * invoke `this.setState()` and set `taskArray` to an empty array.  
 * Then, add a button after the whole `<ul>` list.
-  * rember to use `onClick`!
+  * remember to use an `onClick` event!
 
 <details>
   <summary>Hold up. Whats going on with that clear list method?</summary>
@@ -609,4 +609,16 @@ export default class TodoList extends Component {
 
 </details>
 
+# Bonus:
+
+## Delete single a list item, one at a time
+
+Add the ability to delete a single list item. 
+
+* You will need to add a delete button in your `ListItem` component. It will remove the listItem that it is in.
+* How will the `onClick` event access the state of the parent element?
+  * _Research passing event handlers and props_
+* How will you remove a single item from anywhere in the taskArray?
+  * _Hint: checkout the `Array.splice()` method
+  * You will need to also need pass the index of the task into the event handler when you map the `taskArray` to `ListItems` -- how can you accomplish this?
 
