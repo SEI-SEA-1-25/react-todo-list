@@ -10,7 +10,7 @@ This is what our list will look like when we're finished:
 
 Let's get started!
 
-* Because this is a new exercise, be sure to close the running application in Terminal first.
+* Because this is a new exercise, be sure to close any running applications in Terminal first.
 
 Clone this repo and then make a react app in it:
 
@@ -35,11 +35,15 @@ npm start
 
 * Make sure that as you go, you frequently check the site to ensure your changes are all reflecting accurately!
 
-## Part 1: Created the needed components
+## Part 1: App setup and component creation
+
+We will need to refactor App.js into a class component, and create two additional components to render the todo list.
+  * We need a `TodoList` component to show list items and accept input from the user to create new list items
+  * We need to make a component for a list item which will be a child of the `TodoList`
 
 ### Set up App.js as a class component.
 
-As part of the inital setup of the project, refactor the functional App component in `App.js` to be a class based component. 
+As part of the initial setup of the project, refactor the functional App component in `App.js` to be a class based component. 
 
 <details>
   <summary>WAIT! I'm stuck!</summary>
@@ -63,12 +67,9 @@ export default class App extends Component {
 
 </details>
 
-### Make the needed child components for our App
+### Make the needed components for our App
 
 We've learned that we should make new files for each component and that different functionalities should be split into different components.
-
-* We need to make a component that will be our todo list.
-* We need to make a component for a list item
 
 Start with the parent component, the todo list. Call this new component `TodoList.jsx` and have it render the following HTML:
 
@@ -132,7 +133,7 @@ export default class App extends Component {
 
 **your page should now display an empty list.**
 
-Let's make a a child component for the list items. This component can simply render  `<li>Make the list!</li>` so that we are starting with something in this list.
+Let's make the child component for the list items. This component can simply render  `<li>Make the list!</li>` so that we are starting with something in this list.
 
 * Remember to use an `export` statement!
 * Don't forget to import your `ListItem` component into `TodoList.jsx`!
@@ -252,6 +253,7 @@ Now We can map our tasks to an array of `<ListItem />`s and render them in the T
   <summary>Map a what now?</summary>
 
 Here's a simple example that makes a new array by adding an `!` to each element of an array.
+
 ```js
 const phrases = ['ice cream', 'dinosaurs', 'hobbits']
 const excitedPhrases = phrases.map( (phrase, index) => {
@@ -301,10 +303,9 @@ Our app now looks like this:
 
 ## Part 4 Clearing the List
 
-After my nap, I took a look at my todo list and decided I want to be able to clear it since I had complete all my tasks, so lets add that funcionality now.
+After my nap, I took a look at my todo list and decided I want to be able to clear it since I had complete all my tasks, so lets add that functionality now.
 
-We're going to add a button to the list that allows users to clear away
-everything in it. 
+We're going to add a button to the list that allows users to clear away everything in it. 
 
 ### Set up state:
 
@@ -357,7 +358,7 @@ Now, we'll look into making this list changeable. Remember, updating state will 
 <details>
   <summary>Hold up. Whats going on with that clear list method?</summary>
 
-you don't need a callback, since you don't need access to the previous state
+you don't need to use a callback in the setState function, since you don't need access to the previous state
 
 ```jsx
   handleClearList = () => {
@@ -394,27 +395,20 @@ Now what we have is:
 
 
  ### Sure-fire Coding
- There's lots of things that can go wrong when we try to hook up
- new functionality to our app. Our button might be set up wrong, it might not
- call the correct function, the function may have an error in it.
+ There's lots of things that can go wrong when we try to hook up new functionality to our app. Our button might be set up wrong, it might not call the correct function, the function may have an error in it.
 
- Let's add a `console.log()` as a callback to executed after we set the state with handleClearList method. This is an excellent debugging practice. Adding `console.log()` proves to us that the function is actually executing. This proves to us that there's
- nothing wrong with how we hooked up the button and helps narrow our focus in
- case something else went wrong.
+ Let's add a `console.log()` as a callback to be executed after we set the state with handleClearList method. This is an excellent debugging practice. Adding `console.log()` proves to us that the function is actually executing. This proves to us that there's nothing wrong with how we hooked up the button and helps narrow our focus in case something else went wrong.
 
  Let's say you click the button and the list isn't cleared.
- * If you didn't see `"Clearing list!"` in the console then you know something is
-   wrong with the way you hooked up the button. Investigate that.
- * If you did see `"Clearing List!"` in the console and the list still didn't
-   clear then you know you need to investigate your code inside the function
-   after the click.
+ * If you didn't see `"Clearing list!"` in the console then you know something is wrong with the way you hooked up the button. Investigate that.
+ * If you did see `"Clearing List!"` in the console and the list still didn't clear then you know you need to investigate your code inside the function after the click.
 * also log the state to check to see that everything worked right.
 
  Adding simple sanity checks like this to your code will make you a productive
  programmer.
 
 <details>
-  <summary>How do tho?</summary>
+  <summary>I'm stuck!!!</summary>
 
  ```js
   handleClearList = () => {
@@ -428,18 +422,17 @@ Now what we have is:
 
 ## Adding items
 
-
 Let's add one more thing to our app: an input field for more items. 
 
 * We will need to make a form with a submit input and a text input.
-* We will need to make two method that handle text input and form submission
+* We will need to make two methods that handle text input and form submission
 * We will need add a new key in our state object to store the input text.
 
-
-Lets first stub the methods and then create the form to test funcionality!
+Lets first stub the methods and then create the form to test functionality!
 
 * Create a `handleNewItemChange` method and a `handleNewItemSubmit` method. Just have them `console.log` something for testing. 
   * They will both need to be passed the event as a parameter!
+  * Don't forget to make them arrow functions to avoid any hassle with `this` binding!
 
 
 <details>
@@ -460,7 +453,7 @@ handleNewItemChange = (e) => {
 Next Build the form. It will need two inputs, one for text input and the other for form submission.
 
 * the form's `onSubmit` should be given `handleNewItemSubmit` to call back on form submission.
-* The text input's onChange should be given `handleNewItemChange` to call back when the user types
+* The text input's onChange should be given `handleNewItemChange` to call back when the user types something
 
 <details>
   <summary>Whats this form supposed to look like?</summary>
@@ -484,7 +477,6 @@ Next Build the form. It will need two inputs, one for text input and the other f
 
 > Test your new form and check the browser's console for the logs!
 
-
 Once you have verified that it is working, create a key `newItemInput` in the state object to hold the new item that the user inputs.
 
 > Make a new state attribute, initializing `newItemInput` to a blank string. (Hint: remember, `state` is just a JavaScript object, so you you need a comma between key-value pairs.)
@@ -501,11 +493,11 @@ state = {
 
 </details>
 
-Finally, add the fuctionaly needed to each method.
+Finally, build the logic needed in each method.
 
-* `handleNewItemChange`  is for when we type characters into an input field and change the value of `newItem`  
- * We'll need to get the current value of the input field and set state accordingly.
- > Create this function with an event parameter of 'e'. Inside the function, change the state of `newItemInput` to `e.target.value` - this will be the value the user entered into the form.
+* `handleNewItemChange`  is for when a user types characters into the input field  
+  * We'll need to get the current value of the input field and set state accordingly.
+  > Create this function with an event parameter of 'e'. Inside the function, change the state of `newItemInput` to `e.target.value` - this will be the value the user entered into the form.
 
  verify it is updating the state correctly with a console.log() as a callback to `this.setState` before moving on
 
@@ -524,9 +516,9 @@ Finally, add the fuctionaly needed to each method.
 </details>
 
 * `handleNewItemSubmit` is for when we submit the form
- * We will need a callback given to `this.setState` here since we need to get the previous state.
- * don't forget to prevent the default behaviour of form submission!
- > You can use the handy spread operator to spread the previous state into a new array along with the newItemInput from the current state. Don't forget to clear newItemInput with a callback after you set the new state!
+  * We will need a callback given to `this.setState` here since we need to get the previous state.
+  * don't forget to prevent the default behaviour of form submission!
+  > You can use the handy spread operator to spread the previous state into a new array along with the newItemInput from the current state. Don't forget to clear newItemInput with a callback after you set the new state!
 
 <details>
   <summary>I give up! Show me how it works!</summary>
@@ -543,8 +535,6 @@ Finally, add the fuctionaly needed to each method.
   ```
 
 </details>
-
-
 
 ## Final Code Of TodoList.jsx
 
