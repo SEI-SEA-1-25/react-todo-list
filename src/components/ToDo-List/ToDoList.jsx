@@ -33,12 +33,30 @@ export default class ToDoList extends Component {
         // console.log('bye')
     }
     
+    handleDeleteItem = (index) => {
+        this.setState((prevState) => {
+            // don't want to mutate the state directly
+            let newTaskArray = [...prevState.taskArray]
+
+            // (array position, num of items to delete)
+            newTaskArray.splice(index, 1)
+            return {
+                taskArray: newTaskArray
+            }
+        })
+        console.log(`I live at index:`, index)
+        // this.setState({
+            
+        // })
+    }
+
     render() {
         const listComponents = this.state.taskArray.map((listArrayItem, index) => {
             return (
                 <ListItem 
                     key={`${index}`}
                     todo={listArrayItem} 
+                    handleDeleteItem={() => { this.handleDeleteItem(index) }}
                 />
             )
         })
